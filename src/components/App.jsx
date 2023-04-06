@@ -3,6 +3,7 @@ import { Wrapper } from './App.styled';
 import { FeedBackOptions } from './FeedBackOptions/FeedBackOptions';
 import { Statistics } from './Statistics/Statistics';
 import { Section } from './Section/Section';
+import { Notification } from './Notification/Notification.jsx';
 
 export class App extends Component {
   state = {
@@ -37,22 +38,19 @@ export class App extends Component {
             />
           }
         ></Section>
-        <Section
-          title="Statistics"
-          children={
-            this.countTotalFeedback() > 0 ? (
-              <Statistics
-                good={good}
-                neutral={neutral}
-                bad={bad}
-                total={this.countTotalFeedback()}
-                positivePercentage={this.countPositiveFeedbackPercentage()}
-              ></Statistics>
-            ) : (
-              'No feedback given'
-            )
-          }
-        ></Section>
+        <Section title="Statistics">
+          {this.countTotalFeedback() > 0 ? (
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
+            ></Statistics>
+          ) : (
+            <Notification message="There is no feedback" />
+          )}
+        </Section>
       </Wrapper>
     );
   }

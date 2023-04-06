@@ -10,7 +10,6 @@ export const Div = styled.div`
     margin-bottom: 30px;
   }
   color: white;
-  align-items: center;
 `;
 
 export const Title = styled.h2`
